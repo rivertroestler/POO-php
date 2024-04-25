@@ -12,7 +12,11 @@ $date = "2018-02-23";
 
 function formaterDateFr($date) {
     //objet dateTime
-    $dateTime = new DateTime($date, new DateTimeZone('Europe/Paris'));
+    $dateTime = new DateTime(
+        $date, 
+        new DateTimeZone('Europe/Paris')
+    );
+    
     return
     //formater $dateTime
     IntlDateFormatter::formatObject($dateTime, 'eeee d MMMM y', 'fr_FR');
