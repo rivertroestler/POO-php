@@ -92,10 +92,13 @@ class Voiture {
     //méthode démarrer(_vitesseActuelle)
 
     public function demarrer() {
+        if($this->get_vitesseActuelle() > 0) {
+            return "Le véhicule ".$this->_marque." est démarré <br>Sa vitesse actuelle est de: ".$this->_vitesseActuelle." km/h<br>";
+        }
+
         for ($i=0; $i < 1 ; $i++) { 
        $this->set_vitesseActuelle(+1); 
         }
-        //$this->_vitesseActuelle = $_vitesseActuelle +1;
         return "Le véhicule ".$this->_marque." ".$this->_modele." démarre<br>";
     }
 
@@ -114,20 +117,23 @@ class Voiture {
     //méthode stopper(_vitesseActuelle)
 
     public function stopper() {
+        if($this->get_vitesseActuelle()== 0) {
+            return "Le véhicule ".$this->_marque." est à l'arrêt <br>Sa vitesse actuelle est de: ".$this->_vitesseActuelle." km/h<br>";
+        }
+
         $this->_vitesseActuelle = 0;
         return "Le véhicule ".$this->_marque." ".$this->_modele." est stoppé<br>";
     }
 
     //méthode displayInfos()
 
-    public function displayInfos(): string {
-      //switch case to display specific data
-        switch (displayInfos) {
+    public function displayInfos($infos): string {
+        switch ($infos) {
             case "nom":
-                return "Nom et modèle du véhicule ".$this->_marque." ".$this->_modele."<br> Nombre de portes:<br>".$this->_nbPortes;
+                return "Nom et modèle du véhicule: ".$this->_marque." ".$this->_modele."<br> Nombre de portes: ".$this->_nbPortes."<br>";
                 break;
             case "vitesse":
-                return "La vitesse du véhicule ".$this->_marque." ".$this->_modele."est de ".$this->_nbPortes;
+                return "La vitesse du véhicule ".$this->_marque." ".$this->_modele." est de ".$this->_vitesseActuelle." km/h<br>";
                 break;
         }
     }
@@ -151,3 +157,12 @@ echo $v2->demarrer();
 echo $v2->stopper();
 echo $v2->accelerer(20);
 echo $v1->displayInfos("vitesse");
+echo $v2->displayInfos("vitesse");
+
+//bloc 2
+echo $v1->displayInfos("nom");
+echo $v1->demarrer();
+
+//bloc 3
+echo $v2->displayInfos("nom");
+echo $v2->stopper();
