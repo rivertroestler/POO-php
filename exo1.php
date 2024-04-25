@@ -11,3 +11,4 @@ $dateNaissance = new DateTime("1985-01-17");
 $dateCourante = new DateTime("2018-05-21");
 $interval = $dateNaissance->diff($dateCourante);
 echo "Age de la personne: " . $interval->y . "ans, " . $interval->m." mois, ".$interval->d." jours ";
+echo "Age de la personne: " . $interval->format("%y ans %m mois %d jours");
